@@ -7,6 +7,7 @@ Color green2 = const Color(0xFF67A312);
 Color green3 = const Color(0xFFA3D257);
 Color palYel = const Color(0xFFFDF3CF);
 Color white = const Color(0xFFFFFFFF);
+Color grey = const Color(0xFFD9D9D9);
 Color black = const Color(0xFF000000);
 
 // Typography

@@ -7,25 +7,57 @@ class mainFeature extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 41, top: 26, right: 41),
-      decoration: BoxDecoration(color: palYel),
+      margin: const EdgeInsets.only(left: 43, top: 21),
+      // decoration: BoxDecoration(color: palYel),
       child: Row(
         children: [
-          // Oleh-oleh
           Container(
-            padding: const EdgeInsets.only(left: 15, top: 0, right: 15, bottom: 19),
-            child: Column(
+            width: 298,
+            height: 90,
+            // padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            child: Row(
               children: [
-                Image.asset('assets/images/besek-jajanan-removebg-preview_enhanced.png', width: 45, height: 100,),
-                Text('Oleh-Oleh'),
-                Text('Khas Daerah')
+                // Oleh-oleh
+                Container(
+                  padding: const EdgeInsets.only(left: 8, top: 2, right: 8, bottom: 2),
+                  decoration: BoxDecoration(color: grey, border: Border.all(color: Color.fromRGBO(0, 0, 0, 0.3)),borderRadius: BorderRadius.circular(5)),
+                  child: Column(
+                    children: [
+                      Image.asset('assets/images/besek-jajanan-removebg-preview_enhanced.png', width: 45, height: 45,),
+                      Text('Oleh-Oleh'),
+                      Text('Khas Daerah')
+                    ],
+                  ),
+                ),
+                SizedBox(width: 20),
+                // Makanan
+                Container(
+                  padding: const EdgeInsets.only(left: 8, top: 2, right: 8, bottom: 2),
+                  decoration: BoxDecoration(color: grey, border: Border.all(color: Color.fromRGBO(0, 0, 0, 0.3)),borderRadius: BorderRadius.circular(5)),
+                  child: Column(
+                    children: [
+                      Image.asset('assets/images/tumpheng-removebg-preview_enhanced.png', width: 65, height: 43,),
+                      Text('Makanan'),
+                      Text('Tradisional')
+                    ],
+                  ),
+                ),
+                SizedBox(width: 20,),
+                // Minuman
+                Container(
+                  padding: const EdgeInsets.only(left: 8, top: 2, right: 8, bottom: 2),
+                  decoration: BoxDecoration(color: grey, border: Border.all(color: Color.fromRGBO(0, 0, 0, 0.3)),borderRadius: BorderRadius.circular(5)),
+                  child: Column(
+                    children: [
+                      Image.asset('assets/images/teko_dan_gelas_enhanced-removebg-preview.png', width: 65, height: 43,),
+                      Text('Minuman'),
+                      Text('Tradisional')
+                    ],
+                  ),
+                )
               ],
             ),
-          ),
-          // Makanan
-          Container(),
-          // Minuman
-          Container()
+          )
         ],
       ),
     );
