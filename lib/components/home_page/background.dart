@@ -1,4 +1,3 @@
-import 'package:app_makankuy/theme.dart';
 import 'package:flutter/material.dart';
 
 class Background extends StatelessWidget {

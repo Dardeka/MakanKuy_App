@@ -62,7 +62,26 @@ flutter:
 
   assets:
     - assets/images/
-    - assets/icons/
+    - assets/images/ragusa.png
+    - assets/images/Ragusa-big.png
+    - assets/icons/Aktivitas.svg
+    - assets/icons/Beranda.svg
+    - assets/icons/Keranjang.svg
+    - assets/icons/Profile.svg
+    - assets/icons/berandaPage/Lokasi.svg
+    - assets/icons/berandaPage/Notif.svg
+    - assets/icons/berandaPage/Scan.svg
+    - assets/icons/berandaPage/Search.svg
+    - assets/icons/berandaPage/Setting.svg
+    - assets/icons/berandaPage/Topup.svg
+    - assets/icons/oleh2Page/cart.svg
+    - assets/icons/oleh2Page/delivery.svg
+    - assets/icons/oleh2Page/filter.svg
+    - assets/icons/oleh2Page/fav.svg
+    - assets/icons/oleh2Page/home-outline.svg
+    - assets/icons/oleh2Page/info.svg
+    - assets/icons/oleh2Page/kp.svg
+    - assets/icons/oleh2Page/share.svg
 
   # To add assets to your application, add an assets section, like this:
   # assets:
