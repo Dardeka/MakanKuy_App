@@ -1,6 +1,13 @@
 # app_makankuy
 
-A new Flutter project.
+MakanKuy! adalah aplikasi e-commerce
+yang berperan sebagai wadah bagi berbagai usaha UMKM, seperti produsen rumahan
+dan produsen makanan lokal khas daerah, sehingga produk-produk tersebut dapat
+dikenal oleh masyarakat luas dan juga dapat bersaing dengan produk-produk milik
+produsen besar. Aplikasi MakanKuy! juga memberikan edukasi dan pelatihan bagi
+kalangan UMKM. Kegiatan pelatihan ditujukan agar UMKM dapat memaksimalkan
+pemanfaatan teknologi digital dan mereka dapat memperoleh pendapatan yang
+optimal.
 
 ## Getting Started
 
