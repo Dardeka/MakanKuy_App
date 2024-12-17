@@ -78,7 +78,7 @@ class headerApp extends StatelessWidget {
                 // bagian detail
                 Container(
                   width: 299,
-                  margin: const EdgeInsets.only(left: 32, top: 13),
+                  margin: const EdgeInsets.only(left: 32, top: 3),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,

@@ -1,3 +1,5 @@
+import 'package:app_makankuy/components/olehOleh_page/detail_page/allMenu.dart';
+import 'package:app_makankuy/components/olehOleh_page/detail_page/bestSeller_section.dart';
 import 'package:app_makankuy/components/olehOleh_page/detail_page/divider.dart';
 import 'package:app_makankuy/components/olehOleh_page/detail_page/shop_header.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +16,9 @@ class shopDetail extends StatelessWidget {
           children: [
             headerApp(),
             Positioned(top: 45, right: 21.5,  child: Image.asset('assets/images/Ragusa-big.png')),
-            horizontalLine()
+            horizontalLine(),
+            bestSeller(),
+            allMenu()
           ],
         ));
   }

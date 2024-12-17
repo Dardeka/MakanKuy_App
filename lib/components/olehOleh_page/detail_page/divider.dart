@@ -8,9 +8,9 @@ class horizontalLine extends StatelessWidget {
     return Column(
       children: [
         Divider(
-          height: 530,
+          height: 515,
           thickness: 2,
-          color: Color.fromRGBO(117, 117, 117, 1),
+          color: Color.fromRGBO(68, 68, 68, 0.4),
         )
       ],
     );
