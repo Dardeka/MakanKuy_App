@@ -1,3 +1,4 @@
+import 'package:app_makankuy/pages/full_maps.dart';
 import 'package:flutter/material.dart';
 import 'package:app_makankuy/theme.dart';
 
@@ -16,15 +17,27 @@ class maps extends StatelessWidget {
             decoration: BoxDecoration(color: red, borderRadius: BorderRadius.circular(10)),
             width: 313,
             height: 164,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('UMKM disekitar :', style: bold12.copyWith(color: white)),
-                // image
-                const SizedBox(height: 8),
-                Image.asset('assets/images/gmaps.png', fit: BoxFit.fill,)
-              ],
-            ),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: red,
+                padding: const EdgeInsets.only(left: 10, right: 10, bottom: 1, top: 0),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> MkMaps()));
+              }, 
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('UMKM disekitar :', style: bold12.copyWith(color: white)),
+                  // image
+                  const SizedBox(height: 8),
+                  Image.asset('assets/images/gmaps.png', fit: BoxFit.fill,)
+                ],
+              ),
+            )
           )
         ],
       ),

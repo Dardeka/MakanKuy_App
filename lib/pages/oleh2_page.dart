@@ -47,10 +47,9 @@ class olehOleh extends StatelessWidget {
                       // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       // crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SvgPicture.asset('assets/icons/Beranda.svg'),
+                        SvgPicture.asset('assets/icons/oleh2Page/home-outline.svg'),
                         Text(
                           'Beranda',
-                          style: bold6.copyWith(fontSize: 14),
                         )
                       ],
                     ),
