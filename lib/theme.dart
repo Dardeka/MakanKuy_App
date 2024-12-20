@@ -19,6 +19,4 @@ TextStyle semiBold12 =
     regular6.copyWith(fontSize: 12, fontWeight: FontWeight.w600);
 TextStyle bold6 = regular6.copyWith(fontWeight: FontWeight.w700);
 TextStyle bold12 = semiBold12.copyWith(fontWeight: FontWeight.w700);
-// TextStyle adlam20 = const TextStyle(
-//     fontFamily: 'ADLaM', fontSize: 20
-// );
+TextStyle adlam20 = const TextStyle(fontFamily: 'ADLaM', fontSize: 40);

@@ -5,6 +5,7 @@ import 'package:app_makankuy/components/home_page/mainFeature.dart';
 import 'package:app_makankuy/components/home_page/maps.dart';
 import 'package:app_makankuy/components/home_page/poster.dart';
 import 'package:app_makankuy/components/home_page/saldo.dart';
+import 'package:app_makankuy/components/profile/profile_page.dart';
 import 'package:app_makankuy/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -52,47 +53,86 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Container(
                     // padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                    child: Column(
-                      // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      // crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset('assets/icons/Beranda.svg'),
-                        Text(
-                          'Beranda',
-                          style: bold6.copyWith(fontSize: 14),
-                        )
-                      ],
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.transparent,
+                        shadowColor: Colors.transparent,
+                      ),
+                      onPressed: () {
+                        // Navigator.push(context, MaterialPageRoute(builder: (context)=>profilePage()));
+                      }, 
+                      child: Column(
+                        children: [
+                          SvgPicture.asset('assets/icons/Beranda.svg'),
+                          Text(
+                            'Beranda',
+                            style: bold6.copyWith(fontSize: 14),
+                          )
+                        ],
+                      ),
                     ),
                   ),
+                  // ),
                   // aktivitas
                   Container(
                     // padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                    child: Column(
-                      children: [
-                        SvgPicture.asset('assets/icons/Aktivitas.svg'),
-                        const Text('Aktivitas')
-                      ],
-                    ),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.transparent,
+                        shadowColor: Colors.transparent,
+                        padding: const EdgeInsets.only(left: 10, right: 10, bottom: 1, top: 0),
+                      ),
+                      onPressed: () {
+                        // Navigator.push(context, MaterialPageRoute(builder: (context)=>profilePage()));
+                      }, 
+                      child: Column(
+                        children: [
+                          SvgPicture.asset('assets/icons/Aktivitas.svg'),
+                          Text('Aktivitas', style: TextStyle(color: black),)
+                        ],
+                      ),
+                    )
                   ),
                   // keranjang
                   Container(
                     // padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                    child: Column(
-                      children: [
-                        SvgPicture.asset('assets/icons/Keranjang.svg'),
-                        const Text('Keranjang')
-                      ],
-                    ),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.transparent,
+                        shadowColor: Colors.transparent,
+                        padding: const EdgeInsets.only(left: 10, right: 10, bottom: 1, top: 0),
+                      ),
+                      onPressed: () {
+                        // Navigator.push(context, MaterialPageRoute(builder: (context)=>profilePage()));
+                      }, 
+                      child: Column(
+                        children: [
+                          SvgPicture.asset('assets/icons/Keranjang.svg'),
+                          const Text('Keranjang', style: TextStyle(color: Colors.black),)
+                        ],
+                      ),
+                    )
+                    
+                  //   
                   ),
                   // profil
                   Container(
                     // padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                    child: Column(
-                      children: [
-                        SvgPicture.asset('assets/icons/Profile.svg'),
-                        const Text('Profil')
-                      ],
-                    ),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.transparent,
+                        shadowColor: Colors.transparent,
+                      ),
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>profilePage()));
+                      }, 
+                      child: Column(
+                        children: [
+                          SvgPicture.asset('assets/icons/Profile.svg'),
+                          const Text('Profil', style: TextStyle(color: Colors.black),)
+                        ],
+                      ),
+                    )
                   )
                 ],
               ))),

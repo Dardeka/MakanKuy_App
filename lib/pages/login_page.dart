@@ -26,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
                 backgroundColor: green1,
               ),
               SizedBox(height: 10),
-              Text('MakanKuy!', style: regular12,
+              Text('MakanKuy!', style: adlam20,
               ),
               SizedBox(height: 50),
               Container(

@@ -107,9 +107,9 @@ flutter:
         - asset: assets/fonts/Montserrat-Regular.otf
         - asset: assets/fonts/Montserrat-SemiBold.otf
           weight: 600
-    # - family: ADLaM
-    #   fonts: 
-    #   - asset: assets/fonts/ADLaM-Regular-20.otf
+    - family: ADLaM
+      fonts: 
+        - asset: assets/fonts/ADLaM-Regular-20.ttf
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
