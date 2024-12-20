@@ -1,4 +1,5 @@
 import 'package:app_makankuy/pages/home_page.dart';
+import 'package:app_makankuy/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: LoginPage(),
     );
   }
 }
