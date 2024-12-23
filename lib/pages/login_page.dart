@@ -1,6 +1,6 @@
+import 'package:app_makankuy/pages/home_page.dart';
 import 'package:app_makankuy/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -25,13 +25,13 @@ class _LoginPageState extends State<LoginPage> {
                 radius: 75,
                 backgroundColor: green1,
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Text('MakanKuy!', style: adlam20,
               ),
-              SizedBox(height: 50),
+              const SizedBox(height: 50),
               Container(
-                padding: EdgeInsets.all(10),
-                margin: EdgeInsets.symmetric(horizontal: 50),
+                padding: const EdgeInsets.all(10),
+                margin: const EdgeInsets.symmetric(horizontal: 50),
                 decoration: BoxDecoration(
                   color: const Color.fromARGB(0, 254, 254, 254),
                   borderRadius: BorderRadius.circular(10),
@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
 
                       ),
                     ),
-                    SizedBox(height: 30),
+                    const SizedBox(height: 30),
                     TextField(
                       obscureText: _isObscure,
                       decoration: InputDecoration(
@@ -75,13 +75,15 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: (){},
+                        onPressed: (){
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const HomePage()));
+                        },
                       style: ElevatedButton.styleFrom(backgroundColor: red,
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
@@ -91,17 +93,17 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               GestureDetector(
                 onTap: () {
                   //buat ke halaman register
                 },
-                child: RichText(text: TextSpan(text: 'Silahkan', style: TextStyle(color: Colors.white, fontSize: 14),
+                child: RichText(text: TextSpan(text: 'Silahkan', style: const TextStyle(color: Colors.white, fontSize: 14),
                 children: [
                   TextSpan(text: ' Daftar ', style: TextStyle(color: red, fontWeight: FontWeight.bold,
                   ),
                   ),
-                  TextSpan(
+                  const TextSpan(
                     text: 'bila Anda belum memiliki Akun',
                   ),
                 ],),),
