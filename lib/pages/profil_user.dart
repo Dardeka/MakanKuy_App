@@ -7,6 +7,7 @@ import 'package:app_makankuy/components/home_page/poster.dart';
 import 'package:app_makankuy/components/home_page/saldo.dart';
 import 'package:app_makankuy/components/profile/profile_page.dart';
 import 'package:app_makankuy/pages/aktivasi.dart';
+import 'package:app_makankuy/pages/home_page.dart';
 import 'package:app_makankuy/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -24,7 +25,7 @@ class ProfileUser extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
+        backgroundColor: green2,
         title: Text('Profil', style: TextStyle(color: Colors.white)),
         centerTitle: true,
         leading: IconButton(
@@ -33,7 +34,7 @@ class ProfileUser extends StatelessWidget {
         ),
       ),
       body: Container(
-        color: Colors.lightGreen,
+        color: green3,
         width: 2000.0,
         height: 900.0,
         child: Column(
@@ -52,7 +53,7 @@ class ProfileUser extends StatelessWidget {
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-              ),
+              ), 
             ),
             SizedBox(height: 30),
             ElevatedButton(
@@ -94,7 +95,9 @@ class ProfileUser extends StatelessWidget {
                         backgroundColor: Colors.transparent,
                         shadowColor: Colors.transparent,
                       ),
-                      onPressed: () {}, 
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+                      }, 
                       child: Column(
                         children: [
                           SvgPicture.asset('assets/icons/HomeProfil.svg'),
@@ -134,9 +137,7 @@ class ProfileUser extends StatelessWidget {
                         shadowColor: Colors.transparent,
                         padding: const EdgeInsets.only(left: 10, right: 10, bottom: 1, top: 0),
                       ),
-                      onPressed: () {
-                        // Navigator.push(context, MaterialPageRoute(builder: (context)=>profilePage()));
-                      }, 
+                      onPressed: () {}, 
                       child: Column(
                         children: [
                           SvgPicture.asset('assets/icons/Keranjang.svg'),
@@ -156,7 +157,7 @@ class ProfileUser extends StatelessWidget {
                         shadowColor: Colors.transparent,
                       ),
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>profilePage()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileUser()));
                       }, 
                       child: Column(
                         children: [

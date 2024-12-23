@@ -35,7 +35,7 @@ class Aktivasi extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            color: Colors.green,
+            color: green2,
             height: 200,
             child: Stack(
               children: [
@@ -79,7 +79,7 @@ class Aktivasi extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(
+          Flexible(
             child: Container(
               color: Colors.lightGreen[200],
               child: Padding(
@@ -92,7 +92,7 @@ class Aktivasi extends StatelessWidget {
                     CustomTextField(labelText: 'No. Telepon'),
                     CustomTextField(labelText: 'NIK'),
                     CustomTextField(labelText: 'NPWP'),
-                    SizedBox(height: 20),
+                    SizedBox(height: 10),
                     ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(

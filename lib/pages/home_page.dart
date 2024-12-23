@@ -6,6 +6,7 @@ import 'package:app_makankuy/components/home_page/maps.dart';
 import 'package:app_makankuy/components/home_page/poster.dart';
 import 'package:app_makankuy/components/home_page/saldo.dart';
 import 'package:app_makankuy/components/profile/profile_page.dart';
+import 'package:app_makankuy/pages/profil_user.dart';
 import 'package:app_makankuy/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -124,7 +125,7 @@ class _HomePageState extends State<HomePage> {
                         shadowColor: Colors.transparent,
                       ),
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>profilePage()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileUser()));
                       }, 
                       child: Column(
                         children: [
