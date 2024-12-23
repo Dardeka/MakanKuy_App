@@ -8,6 +8,8 @@ import 'package:app_makankuy/pages/profile_page.dart';
 import 'package:app_makankuy/pages/tren_page.dart';
 import 'package:app_makankuy/pages/review_page.dart';
 
+import 'pages/WriterHome.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'MakanKuy!',
       debugShowCheckedModeBanner: false,
-      home: TrenPage(),
+      home: Writerhome(),
     );
   }
 }
