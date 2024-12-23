@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'MakanKuy!',
       debugShowCheckedModeBanner: false,
-      home: ProfilePage(),
+      home: TrenPage(),
     );
   }
 }
