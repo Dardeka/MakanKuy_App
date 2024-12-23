@@ -71,6 +71,8 @@ flutter:
     - assets/icons/Aktivitas.svg
     - assets/icons/Beranda.svg
     - assets/icons/Keranjang.svg
+    - assets/icons/HomeProfil.svg
+    - assets/icons/IconProfil.svg
     - assets/icons/Profile.svg
     - assets/icons/berandaPage/Lokasi.svg
     - assets/icons/berandaPage/Notif.svg
