@@ -1,19 +1,8 @@
+
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: ReviewPage(),
-    );
-  }
+  runApp(const ReviewPage());
 }
 
 class ReviewPage extends StatelessWidget {
@@ -21,32 +10,35 @@ class ReviewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.west, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.west, color: Colors.white),
+            onPressed: () => Navigator.pop(context),
+          ),
+          title: const Text("Ulasan Makanan"),
+          backgroundColor: Colors.green,
         ),
-        title: const Text("Ulasan Makanan"),
-        backgroundColor: Colors.green,
-      ),
-      body: ListView(
-        padding: const EdgeInsets.all(16.0),
-        children: [
-          buildReview(
-            context: context,
-            username: "user312",
-            date: "2-9-2024",
-            review: "Makanannya enak, porsinya juga bikin kenyang, makasih ya seller",
-            adminReply: "Terimakasih sudah membeli di toko kami",
-          ),
-          buildReview(
-            context: context,
-            username: "user312",
-            date: "2-9-2024",
-            review: "Rasanya agak hambar, tp gapapa ttp enak",
-          ),
-        ],
+        body: ListView(
+          padding: const EdgeInsets.all(16.0),
+          children: [
+            buildReview(
+              context: context,
+              username: "user312",
+              date: "2-9-2024",
+              review: "Makanannya enak, porsinya juga bikin kenyang, makasih ya seller",
+              adminReply: "Terimakasih sudah membeli di toko kami",
+            ),
+            buildReview(
+              context: context,
+              username: "user312",
+              date: "2-9-2024",
+              review: "Rasanya agak hambar, tp gapapa ttp enak",
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -173,7 +165,7 @@ class ReviewPage extends StatelessWidget {
             ),
           ],
         );
-      },
-    );
-  }
+     },
+);
+}
 }

@@ -1,17 +1,16 @@
-
-import 'package:app_makankuy/pages/home_page.dart';
-import 'package:app_makankuy/pages/register_page.dart';
+import 'package:app_makankuy/pages/login_page.dart';
 import 'package:app_makankuy/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   bool _isObscure = true; 
 
   @override
@@ -27,12 +26,13 @@ class _LoginPageState extends State<LoginPage> {
                 radius: 75,
                 backgroundColor: green1,
               ),
-              const SizedBox(height: 10),
-              Text('MakanKuy!', style: adlam20),
-              const SizedBox(height: 50),
+              SizedBox(height: 10),
+              Text('MakanKuy!', style: adlam20,
+              ),
+              SizedBox(height: 50),
               Container(
-                padding: const EdgeInsets.all(10),
-                margin: const EdgeInsets.symmetric(horizontal: 50),
+                padding: EdgeInsets.all(10),
+                margin: EdgeInsets.symmetric(horizontal: 50),
                 decoration: BoxDecoration(
                   color: const Color.fromARGB(0, 254, 254, 254),
                   borderRadius: BorderRadius.circular(10),
@@ -44,14 +44,41 @@ class _LoginPageState extends State<LoginPage> {
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: grey,
+                        hintText: 'Nama',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: BorderSide.none,
+                        ),
+
+                      ),
+                    ),
+                    SizedBox(height: 30),
+                    TextField(
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: grey,
+                        hintText: 'Nomor Hp',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: BorderSide.none,
+                        ),
+
+                      ),
+                    ),
+                    SizedBox(height: 30),
+                    TextField(
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: grey,
                         hintText: 'email/username',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
                           borderSide: BorderSide.none,
                         ),
+
                       ),
                     ),
-                    const SizedBox(height: 30),
+                    SizedBox(height: 30),
                     TextField(
                       obscureText: _isObscure,
                       decoration: InputDecoration(
@@ -75,50 +102,41 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20),
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage()));
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: red,
-                          padding: const EdgeInsets.all(10),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                        ),
-                        child: Text('Masuk', style: TextStyle(color: white, fontSize: 16)),
+                        onPressed: (){},
+                      style: ElevatedButton.styleFrom(backgroundColor: red,
+                      padding: EdgeInsets.all(10),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
                       ),
+                      ), 
+                      child: Text('Masuk', style: TextStyle(color: white, fontSize: 16,),),),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 15),
+              SizedBox(height: 15),
               GestureDetector(
                 onTap: () {
-                  // Navigasi ke halaman Register
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterPage()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage()));
                 },
-                child: RichText(
-                  text: TextSpan(
-                    text: 'Silahkan daftar jika belum punya akun ',
-                    style: const TextStyle(color: Colors.white, fontSize: 14),
-                    children: [
-                      TextSpan(
-                        text: ' Daftar ',
-                        style: TextStyle(color: red, fontWeight: FontWeight.bold),
-                        
-                      ),
-                    ],
+                child: RichText(text: TextSpan(text: 'Silahkan', style: TextStyle(color: Colors.white, fontSize: 14),
+                children: [
+                  TextSpan(text: ' Masuk ', style: TextStyle(color: red, fontWeight: FontWeight.bold,
                   ),
-                ),
+                  ),
+                  TextSpan(
+                    text: 'bila Anda sudah memiliki Akun',
+                  ),
+                ],),),
               ),
             ],
           ),
         ),
-),
+     ),
 );
 }
 }
