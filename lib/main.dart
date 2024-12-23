@@ -1,3 +1,4 @@
+import 'package:app_makankuy/pages/aktivasi.dart';
 import 'package:app_makankuy/pages/home_page.dart';
 import 'package:app_makankuy/pages/login_page.dart';
 import 'package:app_makankuy/pages/profil_user.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'MakanKuy!',
       debugShowCheckedModeBanner: false,
-      home: ProfileUser(),
+      home: Aktivasi(),
     );
   }
 }

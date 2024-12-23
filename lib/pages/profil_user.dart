@@ -6,9 +6,11 @@ import 'package:app_makankuy/components/home_page/maps.dart';
 import 'package:app_makankuy/components/home_page/poster.dart';
 import 'package:app_makankuy/components/home_page/saldo.dart';
 import 'package:app_makankuy/components/profile/profile_page.dart';
+import 'package:app_makankuy/pages/aktivasi.dart';
 import 'package:app_makankuy/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
 class User {
   final String name;
 
@@ -58,7 +60,10 @@ class ProfileUser extends StatelessWidget {
                 backgroundColor: Colors.lightGreen,
                 padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Aktivasi
+                          ()));
+              },
               child: Text('Aktivasi Toko', style: new TextStyle(color: Colors.black)),
             ),
             SizedBox(height: 15),
@@ -89,9 +94,7 @@ class ProfileUser extends StatelessWidget {
                         backgroundColor: Colors.transparent,
                         shadowColor: Colors.transparent,
                       ),
-                      onPressed: () {
-                        // Navigator.push(context, MaterialPageRoute(builder: (context)=>profilePage()));
-                      }, 
+                      onPressed: () {}, 
                       child: Column(
                         children: [
                           SvgPicture.asset('assets/icons/HomeProfil.svg'),
@@ -113,9 +116,7 @@ class ProfileUser extends StatelessWidget {
                         shadowColor: Colors.transparent,
                         padding: const EdgeInsets.only(left: 10, right: 10, bottom: 1, top: 0),
                       ),
-                      onPressed: () {
-                        // Navigator.push(context, MaterialPageRoute(builder: (context)=>profilePage()));
-                      }, 
+                      onPressed: () {}, 
                       child: Column(
                         children: [
                           SvgPicture.asset('assets/icons/Aktivitas.svg'),
