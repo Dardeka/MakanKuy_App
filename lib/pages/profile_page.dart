@@ -1,7 +1,8 @@
+import 'package:app_makankuy/pages/WriterHome.dart';
 import 'package:app_makankuy/pages/login_page.dart';
-import 'package:flutter/material.dart';
 import 'package:app_makankuy/pages/tren_page.dart';
 import 'package:app_makankuy/pages/review_page.dart';
+import 'package:flutter/material.dart';
 
 void main() {
   runApp(const ProfilePage());
@@ -27,21 +28,32 @@ class UserProfilePage extends StatefulWidget {
 }
 
 class _UserProfilePageState extends State<UserProfilePage> {
-  int _currentIndex = 2; // Set default index to 'Profil' (the 3rd tab)
+  int _currentIndex = 2; // Default to 'Profil'
 
   void _navigateTo(int index) {
-    if (index == _currentIndex) return; // Jika tab yang dipilih sama, jangan ubah state
-    if (index == 1) {
-      // Navigasi ke halaman Tren
-      Navigator.push(
+    if (index == _currentIndex) return; // Avoid redundant navigation
+    if (index == 0) {
+      // Navigate to Beranda (WriterHome) without back arrow
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const Writerhome()),
+      );
+    } else if (index == 1) {
+      // Navigate to Tren without back arrow
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const TrenPage()),
       );
-    } else {
-      setState(() {
-        _currentIndex = index; // Perbarui tab aktif
-      });
+    } else if (index == 2) {
+      // Navigate to Profil (current page)
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const ProfilePage()),
+      );
     }
+    setState(() {
+      _currentIndex = index; // Update the current index
+    });
   }
 
   @override
@@ -58,7 +70,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
         actions: [
           TextButton(
             onPressed: () {
-              // Logika untuk tombol Keluar
+              // Show logout confirmation dialog
               showDialog(
                 context: context,
                 builder: (context) => AlertDialog(
@@ -67,18 +79,19 @@ class _UserProfilePageState extends State<UserProfilePage> {
                   actions: [
                     TextButton(
                       onPressed: () {
-                        Navigator.of(context).pop(); // Tutup dialog
+                        Navigator.of(context).pop(); // Close the dialog
                       },
                       child: const Text("Batal"),
                     ),
                     TextButton(
                       onPressed: () {
-                    // Navigasi ke halaman Ulasan Produk
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const LoginPage()),
-                    );
-                  },
+                        // Navigate to Login Page without back arrow
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (context) => const LoginPage()),
+                          (route) => false, // Clear navigation stack
+                        );
+                      },
                       child: const Text(
                         "Keluar",
                         style: TextStyle(color: Colors.red),
@@ -140,7 +153,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                     padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
                   ),
                   onPressed: () {
-                    // Logika untuk Pelatihan UMKM
+                    // Placeholder for UMKM Training
                     print('Pelatihan UMKM');
                   },
                   child: Column(
@@ -157,7 +170,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                     padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
                   ),
                   onPressed: () {
-                    // Logika untuk Kelola Produk
+                    // Placeholder for Product Management
                     print('Kelola Produk');
                   },
                   child: Column(
@@ -174,7 +187,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
                     padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
                   ),
                   onPressed: () {
-                    // Navigasi ke halaman Ulasan Produk
+                    // Navigate to Product Reviews Page
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => const ReviewPage()),

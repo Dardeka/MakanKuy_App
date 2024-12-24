@@ -3,6 +3,8 @@ import 'package:app_makankuy/pages/login_page.dart';
 import 'package:app_makankuy/pages/oleh2_page.dart';
 import 'package:flutter/material.dart';
 
+import 'pages/WriterHome.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'MakanKuy!',
       debugShowCheckedModeBanner: false,
-      home: olehOleh(),
+      home: Writerhome(),
     );
   }
 }

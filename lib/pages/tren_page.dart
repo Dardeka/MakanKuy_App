@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:app_makankuy/pages/profile_page.dart';
+import 'package:app_makankuy/pages/WriterHome.dart';
 
 void main() {
   runApp(const TrenPage());
@@ -35,21 +36,28 @@ class _TrenProdukScreenState extends State<TrenProdukScreen> {
     "Food 7",
   ];
 
-  int _currentIndex = 1; // Halaman awal adalah "Tren"
+  int _currentIndex = 1; // Default is "Tren" tab
 
   /// Navigasi antar tab atau halaman
   void _navigateTo(int index) {
-    if (index == _currentIndex) return; // Jika tab yang dipilih sama, jangan ubah state
-    if (index == 2) {
-      // Navigasi ke halaman Profil
-      Navigator.push(
+    if (index == _currentIndex) return; // Avoid redundant navigation
+
+    setState(() {
+      _currentIndex = index; // Update active tab index
+    });
+
+    if (index == 0) {
+      // Navigate to Beranda (WriterHome)
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const Writerhome()),
+      );
+    } else if (index == 2) {
+      // Navigate to Profil
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const ProfilePage()),
       );
-    } else {
-      setState(() {
-        _currentIndex = index; // Perbarui tab aktif
-      });
     }
   }
 
@@ -64,71 +72,60 @@ class _TrenProdukScreenState extends State<TrenProdukScreen> {
         ),
         centerTitle: true,
       ),
-      body: _currentIndex == 1
-          ? ListView.builder(
-              itemCount: products.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 5.0, horizontal: 16.0),
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 30,
-                        height: 30,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color:
-                              index < 3 ? Colors.white : Colors.transparent,
-                          shape: BoxShape.circle,
-                        ),
-                        child: index < 3
-                            ? Icon(
-                                Icons.emoji_events,
-                                color: index == 0
-                                    ? Colors.amber
-                                    : index == 1
-                                        ? Colors.grey
-                                        : Colors.brown,
-                                size: 20,
-                              )
-                            : Text(
-                                '${index + 1}',
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                      ),
-                      const SizedBox(width: 16.0),
-                      Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.all(16.0),
-                          decoration: BoxDecoration(
-                            color: Colors.red.shade100,
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          child: Text(
-                            products[index],
-                            style: const TextStyle(
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+      body: ListView.builder(
+        itemCount: products.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 16.0),
+            child: Row(
+              children: [
+                Container(
+                  width: 30,
+                  height: 30,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: index < 3 ? Colors.white : Colors.transparent,
+                    shape: BoxShape.circle,
                   ),
-                );
-              },
-            )
-          : Center(
-              child: Text(
-                _currentIndex == 0
-                    ? 'Beranda'
-                    : 'Halaman tidak tersedia',
-                style: const TextStyle(fontSize: 24),
-              ),
+                  child: index < 3
+                      ? Icon(
+                          Icons.emoji_events,
+                          color: index == 0
+                              ? Colors.amber
+                              : index == 1
+                                  ? Colors.grey
+                                  : Colors.brown,
+                          size: 20,
+                        )
+                      : Text(
+                          '${index + 1}',
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                ),
+                const SizedBox(width: 16.0),
+                Expanded(
+                  child: Container(
+                    padding: const EdgeInsets.all(16.0),
+                    decoration: BoxDecoration(
+                      color: Colors.red.shade100,
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    child: Text(
+                      products[index],
+                      style: const TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
+          );
+        },
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: _navigateTo,

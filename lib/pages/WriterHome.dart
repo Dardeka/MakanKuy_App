@@ -3,27 +3,55 @@ import 'package:app_makankuy/pages/tren_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:app_makankuy/theme.dart';
+import 'package:app_makankuy/pages/tren_page.dart';
 
-class Writerhome extends StatelessWidget {
+void main() {
+  runApp(const Writerhome());
+}
+
+class Writerhome extends StatefulWidget {
+  const Writerhome({Key? key}) : super(key: key);
+
+  @override
+  _WriterhomeState createState() => _WriterhomeState();
+}
+
+class _WriterhomeState extends State<Writerhome> {
+  int _currentIndex = 0; // Default index is 'Beranda'
+
+  void _navigateTo(int index) {
+    if (index == _currentIndex) return; // Avoid redundant navigation
+    setState(() {
+      _currentIndex = index; // Update the current index
+    });
+
+    if (index == 1) {
+      // Navigate to 'Tren'
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const TrenPage()),
+      );
+    } else if (index == 2) {
+      // Navigate to 'Profile'
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const ProfilePage()),
+      );
+    }
+    // No explicit navigation for index 0 (Beranda) as it's the current page.
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 1,
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Mie Ayam',
-              style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            Text(
-              'Budi Doremi',
-              style: TextStyle(color: Colors.black54, fontSize: 14),
-            ),
-          ],
+        title: const Text(
+          'Mie Ayam',
+          style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
         ),
+        centerTitle: false,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,14 +59,14 @@ class Writerhome extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Container(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: Colors.grey.shade200,
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                children: const [
                   Text(
                     'Jumlah Saldo',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -55,89 +83,36 @@ class Writerhome extends StatelessWidget {
           Container(
             color: Colors.grey.shade300,
             width: double.infinity,
-            padding: EdgeInsets.all(16),
-            child: Text(
-              'ini berita!! ini berita!! ini berita!!',
+            padding: const EdgeInsets.all(16),
+            child: const Text(
+              'Ini berita!! Ini berita!! Ini berita!!',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
           ),
         ],
       ),
-
-      // GANTI DARI SINI JAH
-      bottomNavigationBar: Material(
-          borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-          child: BottomAppBar(
-              color: palYel,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    // padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
-                        shadowColor: Colors.transparent,
-                      ),
-                      onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Writerhome()));
-                      }, 
-                      child: Column(
-                        children: [
-                          SvgPicture.asset('assets/icons/HomeProfil.svg'),
-                          Text(
-                            'Beranda',
-                            style: bold6.copyWith(fontSize: 14),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  // ),
-                  // aktivitas
-                  // keranjang
-                  // profil
-                  Container(
-                    // padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
-                        shadowColor: Colors.transparent,
-                      ),
-                      onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>TrenPage()));
-                      }, 
-                      child: Column(
-                        children: [
-                          SvgPicture.asset('assets/icons/WriterHome/trending_up.svg'),
-                          const Text('Profil', style: TextStyle(color: Colors.black),)
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    // padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
-                        shadowColor: Colors.transparent,
-                      ),
-                      onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage()));
-                      }, 
-                      child: Column(
-                        children: [
-                          SvgPicture.asset('assets/icons/WriterHome/person.svg'),
-                          const Text('Profil', style: TextStyle(color: Colors.black),)
-                        ],
-                      ),
-                    )
-                  ),
-                ],
-              ))),
-    );
-  }
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: _navigateTo,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Beranda',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.stairs),
+            label: 'Tren',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profil',
+          ),
+        ],
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Color.fromARGB(255, 108, 108, 108),
+        backgroundColor: Color.fromARGB(255, 80, 198, 83),
+),
+);
+}
 }
