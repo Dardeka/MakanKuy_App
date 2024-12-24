@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'MakanKuy!',
       debugShowCheckedModeBanner: false,
-      home: Writerhome(),
+      home: LoginPage(),
     );
   }
 }

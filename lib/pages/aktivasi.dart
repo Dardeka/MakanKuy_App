@@ -1,4 +1,5 @@
 
+import 'package:app_makankuy/pages/WriterHome.dart';
 import 'package:app_makankuy/pages/profil_user.dart';
 import 'package:app_makankuy/theme.dart';
 import 'package:flutter/material.dart';
@@ -94,7 +95,10 @@ class Aktivasi extends StatelessWidget {
                     CustomTextField(labelText: 'NPWP'),
                     SizedBox(height: 10),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Writerhome
+                          ()));
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.grey[300],
                       ),
