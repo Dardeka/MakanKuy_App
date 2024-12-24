@@ -135,7 +135,7 @@ class _TrenProdukScreenState extends State<TrenProdukScreen> {
             label: 'Beranda',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.stairs),
+            icon: Icon(Icons.trending_up),
             label: 'Tren',
           ),
           BottomNavigationBarItem(

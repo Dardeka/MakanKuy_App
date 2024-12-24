@@ -215,7 +215,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
             label: 'Beranda',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.stairs),
+            icon: Icon(Icons.trending_up),
             label: 'Tren',
           ),
           BottomNavigationBarItem(
