@@ -14,14 +14,14 @@ class _createScreenState extends State<createScreen> {
   final DatabaseService _databaseService = DatabaseService.instance;
 
   final shopName = TextEditingController();
-  // final ownerName = TextEditingController();
-  // final address = TextEditingController();
-  // final phoneNum = TextEditingController();
+  final ownerName = TextEditingController();
+  final address = TextEditingController();
+  final TextEditingController phoneNum = TextEditingController();
 
   String? _shopName = null;
-  // String? _ownerName = null;
-  // String? _address = null;
-  // String? _phoneNum = null;
+  String? _ownerName = null;
+  String? _address = null;
+  String? _phoneNum = null;
 
   @override
   Widget build(BuildContext context) {
@@ -43,44 +43,44 @@ class _createScreenState extends State<createScreen> {
               decoration: const InputDecoration(hintText: 'Masukkan nama toko'),
             ),
 
-            // Text('Nama Pemilik'),
-            // TextFormField(
-            //   controller: ownerName,
-            //   onChanged: (value) {
-            //     setState(() {
-            //       _ownerName = value;
-            //     });
-            //   },
-            //   decoration: const InputDecoration(
-            //     hintText: 'Masukkan nama pemilik'
-            //   ),
-            // ),
+            Text('Nama Pemilik'),
+            TextFormField(
+              controller: ownerName,
+              onChanged: (value) {
+                setState(() {
+                  _ownerName = value;
+                });
+              },
+              decoration: const InputDecoration(
+                hintText: 'Masukkan nama pemilik'
+              ),
+            ),
 
-            // Text('Alamat'),
-            // TextFormField(
-            //   controller: address,
-            //   onChanged: (value) {
-            //     setState(() {
-            //       _address = value;
-            //     });
-            //   },
-            //   decoration: const InputDecoration(
-            //     hintText: 'Masukkan alamat'
-            //   ),
-            // ),
+            Text('Alamat'),
+            TextFormField(
+              controller: address,
+              onChanged: (value) {
+                setState(() {
+                  _address = value;
+                });
+              },
+              decoration: const InputDecoration(
+                hintText: 'Masukkan alamat'
+              ),
+            ),
 
-            // Text('Nomor Telepon'),
-            // TextFormField(
-            //   controller: phoneNum,
-            //   onChanged: (value) {
-            //     setState(() {
-            //       _phoneNum = value;
-            //     });
-            //   },
-            //   decoration: const InputDecoration(
-            //     hintText: 'Masukkan nomor telepon'
-            //   ),
-            // ),
+            Text('Nomor Telepon'),
+            TextFormField(
+              controller: phoneNum,
+              onChanged: (value) {
+                setState(() {
+                  _phoneNum = value;
+                });
+              },
+              decoration: const InputDecoration(
+                hintText: 'Masukkan nomor telepon'
+              ),
+            ),
 
             SizedBox(
               height: 10,
@@ -88,13 +88,17 @@ class _createScreenState extends State<createScreen> {
             // SUBMIT BUTTON
             ElevatedButton(
                 onPressed: () async {
-                  if (_shopName == null || _shopName == "") return;
-                  _databaseService.addShop(_shopName!);
+                  if (_shopName == null || _shopName == "" ||
+                    _ownerName == null || _shopName == "" ||
+                    _address == null || _address == "" ||
+                    _phoneNum == null || _phoneNum == ""
+                  ) return;
+                  _databaseService.addShop(_shopName!, _ownerName!, _address!, _phoneNum!);
                   setState(() {
                     _shopName = null;
-                    // _ownerName = null;
-                    // _address = null;
-                    // _phoneNum = null;
+                    _ownerName = null;
+                    _address = null;
+                    _phoneNum = null;
                   });
                   final shops = await _databaseService.getShops();
                   for (var shop in shops) {

@@ -42,7 +42,8 @@ class _olehOlehState extends State<olehOleh> {
         ],
       ),
       // bagian konten page
-      body: _shopList()
+      body:
+      _shopList(),
 
       // Column(
       //   children: [
@@ -50,7 +51,6 @@ class _olehOlehState extends State<olehOleh> {
 
       //   ],
       // )
-      ,
       // bagian navbar page
       bottomNavigationBar: Material(
           borderRadius: const BorderRadius.only(
@@ -119,8 +119,23 @@ class _olehOlehState extends State<olehOleh> {
             itemBuilder: (context, index) {
               Shops shop = snapshot.data![index];
               return ListTile(
-                onLongPress: () {},
-                title: Text(shop.shopName),
+                onLongPress: () {
+                  _databaseService.deleteShop(shop.id);
+                  setState(() {});
+                },
+                title: Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
+                  child: 
+                    Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(shop.shopName, style: TextStyle(fontWeight: FontWeight.w600),),
+                      Text(shop.address, style: TextStyle(fontSize: 12),),
+                      Text(shop.phoneNum)
+                    ],
+                  )
+                ),
               );
             },
           );
