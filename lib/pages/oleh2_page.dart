@@ -2,12 +2,21 @@ import 'package:app_makankuy/components/olehOleh_page/appBar.dart';
 import 'package:app_makankuy/components/olehOleh_page/background_Oleh2.dart';
 import 'package:app_makankuy/components/olehOleh_page/content.dart';
 import 'package:app_makankuy/components/olehOleh_page/filter.dart';
+import 'package:app_makankuy/models/shop.dart';
+import 'package:app_makankuy/services/database_service.dart';
 import 'package:flutter/material.dart';
 import 'package:app_makankuy/theme.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class olehOleh extends StatelessWidget {
+class olehOleh extends StatefulWidget {
   const olehOleh({super.key});
+
+  @override
+  State<olehOleh> createState() => _olehOlehState();
+}
+
+class _olehOlehState extends State<olehOleh> {
+  final DatabaseService _databaseService = DatabaseService.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -24,12 +33,14 @@ class olehOleh extends StatelessWidget {
         title: const headerOlehOleh(),
       ),
       // bagian konten page
-      body: Column(
-        children: [
-          Filter(),
-          contentList()
-        ],
-      )
+      body: _shopList()
+      
+      // Column(
+      //   children: [
+      //     Filter(),
+          
+      //   ],
+      // )
       , 
       // bagian navbar page
       bottomNavigationBar: Material(
@@ -86,6 +97,21 @@ class olehOleh extends StatelessWidget {
                   )
                 ],
               ))),
+    );
+  }
+
+  Widget _shopList(){
+    return  FutureBuilder(
+      future: _databaseService.getShops(), 
+      builder: (context, snapshot){
+        return ListView.builder(
+          itemCount: snapshot.data?.length ?? 0,
+          itemBuilder: (context, index) {
+            Shops shop = snapshot.data![index];
+            return ListTile(title: Text(shop.shopName),);
+          },
+        );
+      }
     );
   }
 }

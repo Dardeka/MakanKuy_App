@@ -1,14 +1,7 @@
-import 'package:app_makankuy/pages/aktivasi.dart';
-import 'package:app_makankuy/pages/home_page.dart';
+import 'package:app_makankuy/components/olehOleh_page/create_shop.dart';
 import 'package:app_makankuy/pages/login_page.dart';
-import 'package:app_makankuy/pages/profil_user.dart';
+import 'package:app_makankuy/pages/oleh2_page.dart';
 import 'package:flutter/material.dart';
-import 'package:app_makankuy/pages/register_page.dart';
-import 'package:app_makankuy/pages/profile_page.dart';
-import 'package:app_makankuy/pages/tren_page.dart';
-import 'package:app_makankuy/pages/review_page.dart';
-
-import 'pages/WriterHome.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'MakanKuy!',
       debugShowCheckedModeBanner: false,
-      home: Writerhome(),
+      home: olehOleh(),
     );
   }
 }
