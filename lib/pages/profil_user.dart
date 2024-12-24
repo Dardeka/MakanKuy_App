@@ -28,10 +28,10 @@ class ProfileUser extends StatelessWidget {
         backgroundColor: green2,
         title: Text('Profil', style: TextStyle(color: Colors.white)),
         centerTitle: true,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {},
-        ),
+        // leading: IconButton(
+        //   icon: Icon(Icons.arrow_back, color: Colors.white),
+        //   onPressed: () {},
+        // ),
       ),
       body: Container(
         color: green3,
@@ -67,11 +67,11 @@ class ProfileUser extends StatelessWidget {
               },
               child: Text('Aktivasi Toko', style: new TextStyle(color: Colors.black)),
             ),
-            SizedBox(height: 15),
+            SizedBox(height: 10),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.lightGreen,
-                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                padding: EdgeInsets.symmetric(horizontal: 35, vertical: 10),
               ),
               onPressed: () {},
               child: Text('Ubah Profil', style: new TextStyle(color: Colors.black)),
