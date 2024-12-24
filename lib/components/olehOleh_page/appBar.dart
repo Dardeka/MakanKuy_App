@@ -15,7 +15,6 @@ class headerOlehOleh extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Text('Oleh-Oleh Khas Daerah', style: bold12.copyWith(color: white, fontSize: 15),),
-          SvgPicture.asset('assets/icons/oleh2Page/cart.svg')
         ],
       ),
     );

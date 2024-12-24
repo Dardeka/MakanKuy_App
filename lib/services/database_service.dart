@@ -67,23 +67,36 @@ class DatabaseService {
     print('Shop inserted with ID');
   }
 
-  Future<List<Shops>> getShops() async {
-  final db = await database;
-  final data = await db.query(_shopsTableName);
-
-  // Periksa isi data dari database untuk debugging
-  print('Data dari database: $data'); 
-
-  // Map data ke dalam model Shops
-  final shops = data.map((e) {
-    // Pastikan setiap field memiliki tipe data yang sesuai
-    return Shops(
-      id: (e[_shopsIdColumnName] ?? 0)as int, // Pastikan ini berupa int
-      shopName: (e[_shopsNameColumnName] ?? 'Unknown') as String, // Pastikan ini berupa String
+  void deleteShop(String id) async{
+    final db = await database;
+    await db.delete(
+      _shopsTableName,
+      where: 'id = ?',
+      whereArgs: [
+        id,
+      ]
     );
-  }).toList();
-  print('Mapped shops: $shops');
-  return shops;
-}
+  }
+
+  Future<List<Shops>> getShops() async {
+    final db = await database;
+    final data = await db.query(_shopsTableName);
+
+    // Periksa isi data dari database untuk debugging
+    print('Data dari database: $data'); 
+
+    // Map data ke dalam model Shops
+    final shops = data.map((e) {
+      // Pastikan setiap field memiliki tipe data yang sesuai
+      return Shops(
+        id: (e[_shopsIdColumnName] ?? 0)as int, // Pastikan ini berupa int
+        shopName: (e[_shopsNameColumnName] ?? 'Unknown') as String, // Pastikan ini berupa String
+      );
+    }).toList();
+    print('Mapped shops: $shops');
+    return shops;
+  }
+
+
 
 }
