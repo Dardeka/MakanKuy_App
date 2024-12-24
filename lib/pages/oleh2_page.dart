@@ -2,6 +2,7 @@ import 'package:app_makankuy/components/olehOleh_page/appBar.dart';
 import 'package:app_makankuy/components/olehOleh_page/background_Oleh2.dart';
 import 'package:app_makankuy/components/olehOleh_page/content.dart';
 import 'package:app_makankuy/components/olehOleh_page/filter.dart';
+import 'package:app_makankuy/components/olehOleh_page/create_shop.dart';
 import 'package:app_makankuy/models/shop.dart';
 import 'package:app_makankuy/services/database_service.dart';
 import 'package:flutter/material.dart';
@@ -31,17 +32,25 @@ class _olehOlehState extends State<olehOleh> {
         backgroundColor: green2,
         toolbarHeight: 58,
         title: const headerOlehOleh(),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => createScreen()));
+              },
+              icon: Icon(Icons.add, color: white,))
+        ],
       ),
       // bagian konten page
-      body: _shopList()
-      
+      body:
+      _shopList(),
+
       // Column(
       //   children: [
       //     Filter(),
-          
+
       //   ],
       // )
-      , 
       // bagian navbar page
       bottomNavigationBar: Material(
           borderRadius: const BorderRadius.only(
@@ -58,7 +67,8 @@ class _olehOlehState extends State<olehOleh> {
                       // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       // crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SvgPicture.asset('assets/icons/oleh2Page/home-outline.svg'),
+                        SvgPicture.asset(
+                            'assets/icons/oleh2Page/home-outline.svg'),
                         Text(
                           'Beranda',
                         )
@@ -100,18 +110,35 @@ class _olehOlehState extends State<olehOleh> {
     );
   }
 
-  Widget _shopList(){
-    return  FutureBuilder(
-      future: _databaseService.getShops(), 
-      builder: (context, snapshot){
-        return ListView.builder(
-          itemCount: snapshot.data?.length ?? 0,
-          itemBuilder: (context, index) {
-            Shops shop = snapshot.data![index];
-            return ListTile(title: Text(shop.shopName),);
-          },
-        );
-      }
-    );
+  Widget _shopList() {
+    return FutureBuilder(
+        future: _databaseService.getShops(),
+        builder: (context, snapshot) {
+          return ListView.builder(
+            itemCount: snapshot.data?.length ?? 0,
+            itemBuilder: (context, index) {
+              Shops shop = snapshot.data![index];
+              return ListTile(
+                onLongPress: () {
+                  _databaseService.deleteShop(shop.id);
+                  setState(() {});
+                },
+                title: Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
+                  child: 
+                    Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(shop.shopName, style: TextStyle(fontWeight: FontWeight.w600),),
+                      Text(shop.address, style: TextStyle(fontSize: 12),),
+                      Text(shop.phoneNum)
+                    ],
+                  )
+                ),
+              );
+            },
+          );
+        });
   }
 }
