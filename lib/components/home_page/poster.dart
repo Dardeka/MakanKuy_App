@@ -14,10 +14,12 @@ class _PosterState extends State<Poster> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 0),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
             decoration: BoxDecoration(color: black),
             child: Row(
+              // crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset('assets/images/poster daerah.png')
               ],

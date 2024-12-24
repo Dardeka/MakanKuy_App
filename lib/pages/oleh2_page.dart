@@ -1,7 +1,6 @@
 import 'package:app_makankuy/components/olehOleh_page/appBar.dart';
-import 'package:app_makankuy/components/olehOleh_page/background_Oleh2.dart';
-import 'package:app_makankuy/components/olehOleh_page/content.dart';
-import 'package:app_makankuy/components/olehOleh_page/filter.dart';
+import 'package:app_makankuy/pages/home_page.dart';
+import 'package:app_makankuy/pages/profil_user.dart';
 import 'package:app_makankuy/components/olehOleh_page/create_shop.dart';
 import 'package:app_makankuy/models/shop.dart';
 import 'package:app_makankuy/services/database_service.dart';
@@ -42,71 +41,100 @@ class _olehOlehState extends State<olehOleh> {
         ],
       ),
       // bagian konten page
-      body:
-      _shopList(),
+      body:_shopList(),
 
-      // Column(
-      //   children: [
-      //     Filter(),
-
-      //   ],
-      // )
-      // bagian navbar page
       bottomNavigationBar: Material(
-          borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-          child: BottomAppBar(
-              color: palYel,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    // padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+        borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+        child: BottomAppBar(
+            color: palYel,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  // padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent,
+                    ),
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+                    }, 
                     child: Column(
-                      // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      // crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SvgPicture.asset(
-                            'assets/icons/oleh2Page/home-outline.svg'),
+                        SvgPicture.asset('assets/icons/HomeProfil.svg'),
                         Text(
                           'Beranda',
+                          style: bold6.copyWith(fontSize: 14),
                         )
                       ],
                     ),
                   ),
-                  // aktivitas
-                  Container(
-                    // padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                ),
+                // ),
+                // aktivitas
+                Container(
+                  // padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent,
+                      padding: const EdgeInsets.only(left: 10, right: 10, bottom: 1, top: 0),
+                    ),
+                    onPressed: () {}, 
                     child: Column(
                       children: [
                         SvgPicture.asset('assets/icons/Aktivitas.svg'),
-                        const Text('Aktivitas')
-                      ],
-                    ),
-                  ),
-                  // keranjang
-                  Container(
-                    // padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                    child: Column(
-                      children: [
-                        SvgPicture.asset('assets/icons/Keranjang.svg'),
-                        const Text('Keranjang')
-                      ],
-                    ),
-                  ),
-                  // profil
-                  Container(
-                    // padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                    child: Column(
-                      children: [
-                        SvgPicture.asset('assets/icons/Profile.svg'),
-                        const Text('Profil')
+                        Text('Aktivitas', style: TextStyle(color: black),)
                       ],
                     ),
                   )
-                ],
-              ))),
+                ),
+                // keranjang
+                Container(
+                  // padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent,
+                      padding: const EdgeInsets.only(left: 10, right: 10, bottom: 1, top: 0),
+                    ),
+                    onPressed: () {}, 
+                    child: Column(
+                      children: [
+                        SvgPicture.asset('assets/icons/Keranjang.svg'),
+                        const Text('Keranjang', style: TextStyle(color: Colors.black),)
+                      ],
+                    ),
+                  )
+                  
+                //   
+                ),
+                // profil
+                Container(
+                  // padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent,
+                    ),
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileUser()));
+                    }, 
+                    child: Column(
+                      children: [
+                        SvgPicture.asset('assets/icons/IconProfil.svg'),
+                        const Text('Profil', style: TextStyle(color: Colors.black),)
+                      ],
+                    ),
+                  )
+                )
+              ],
+            )
+          )
+        ),
     );
   }
 
@@ -124,7 +152,8 @@ class _olehOlehState extends State<olehOleh> {
                   setState(() {});
                 },
                 title: Container(
-                  padding: const EdgeInsets.all(10),
+                  width: 150,
+                  padding: const EdgeInsets.all(15),
                   decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
                   child: 
                     Column(
@@ -132,7 +161,7 @@ class _olehOlehState extends State<olehOleh> {
                     children: [
                       Text(shop.shopName, style: TextStyle(fontWeight: FontWeight.w600),),
                       Text(shop.address, style: TextStyle(fontSize: 12),),
-                      Text(shop.phoneNum)
+                      Text(shop.phoneNum, style: TextStyle(fontSize: 12),)
                     ],
                   )
                 ),

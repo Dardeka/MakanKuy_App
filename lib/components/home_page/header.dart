@@ -16,6 +16,7 @@ class _HeaderState extends State<Header> {
       margin: const EdgeInsets.only(top: 19, bottom: 19, left: 12, right: 12),
       // decoration: BoxDecoration(color: green1),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
               padding: const EdgeInsets.only(
