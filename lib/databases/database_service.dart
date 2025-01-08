@@ -1,4 +1,5 @@
 import 'package:app_makankuy/models/shop.dart';
+import 'package:app_makankuy/models/user.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
@@ -8,12 +9,22 @@ class DatabaseService {
   static Database? _db;
   static final DatabaseService instance = DatabaseService._constructor();
 
+  // Table for shops
   final String _shopsTableName = "Shops";
   final String _shopsIdColumnName = "id";
   final String _shopsNameColumnName = "Name";
   final String _shopsOwnerColumnName = "Owner";
   final String _shopsAddressColumnName = "address";
   final String _shopsPhoneNumColumnName = "phoneNum";
+
+  // table for users
+  final String _usersTableName = "Users";
+  final String _userIdColumnName = "id";
+  final String _userNameColumnName = "Username";
+  final String _userEmailColumnName = "Email";
+  final String _userPhoneColumnName = "phoneNum";
+  final String _userPassColumnName = "Password";
+
 
   DatabaseService._constructor();
 
@@ -34,6 +45,7 @@ class DatabaseService {
       version: 2,
       onCreate: (db, version) {
         print('Creating Shops table');
+        // shops table
         db.execute('''
           CREATE TABLE $_shopsTableName (
             $_shopsIdColumnName INTEGER PRIMARY KEY,
@@ -42,6 +54,17 @@ class DatabaseService {
             $_shopsAddressColumnName TEXT NOT NULL,
             $_shopsPhoneNumColumnName TEXT NOT NULL
 
+          )
+        ''');
+        // users table
+        print('Creating Users table');
+        db.execute('''
+          CREATE TABLE $_usersTableName (
+            $_userIdColumnName INTEGER PRIMARY KEY,
+            $_userNameColumnName TEXT NOT NULL,
+            $_userEmailColumnName TEXT NOT NULL,
+            $_userPhoneColumnName TEXT NOT NULL,
+            $_userPassColumnName TEXT NOT NULL
           )
         ''');
       },
@@ -55,6 +78,51 @@ class DatabaseService {
     return database;
   }
 
+  // CRUD for users table
+  void addUser(String userName, String email, String phoneNum, String password) async{
+    final Database db = await database;
+    await db.insert(_usersTableName, {
+      _userNameColumnName: userName,
+      _userEmailColumnName: email,
+      _userPhoneColumnName: phoneNum,
+      _userPassColumnName: password,
+    });
+    print('User inserted with ID');
+  }
+
+  // authenticate user
+  Future<bool> authenticate(String userName, String password) async{
+    final Database db = await database;
+    var result = await db.query(_usersTableName, where: "$_userNameColumnName = ? AND $_userPassColumnName = ? ", whereArgs: [userName, password]);
+    if(result.isNotEmpty){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+
+  Future <List<User>> getUsers() async{
+    final Database db = await database;
+    final data = await db.query(_usersTableName);
+    print('Data dari : $data');
+
+    final users = data.map((e) {
+      return User(
+        id: (e[_userIdColumnName] ?? 0) as int,
+        userName: (e[_userNameColumnName] ?? 'Unknown') as String, 
+        email: (e[_userEmailColumnName] ?? 'Unknown') as String,
+        phoneNum: (e[_userPhoneColumnName] ?? 'Unknown') as String,
+        password: (e[_userPassColumnName] ?? 'Unknown') as String,
+      );
+    }).toList();
+    print('Mapped users : $users');
+    return users;
+  }
+  // END CRUD for users table
+
+
+  // CRUD for shops table
   void addShop(String shopName, String ownerName, String address,
       String phoneNum) async {
     final db = await database;
@@ -93,4 +161,5 @@ class DatabaseService {
     print('Mapped shops: $shops');
     return shops;
   }
+  // END CRUD for shops table
 }

@@ -28,21 +28,18 @@ class _MkMapsState extends State<MkMaps> {
             options: MapOptions(
               initialCenter: LatLng(-6.1761869, 106.8254453),
               initialZoom: 15.0,
-              
             ),
             children: [
               TileLayer(
                 urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                 additionalOptions: const {
-                  'User-Agent': 'com.example.app', 
+                  'User-Agent': 'com.example.app',
                 },
-                
               ),
             ],
           ),
         ],
         // Masukkin footernya
-      
       ),
     );
   }

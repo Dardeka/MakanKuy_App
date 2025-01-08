@@ -1,4 +1,5 @@
 
+import 'package:app_makankuy/databases/database_service.dart';
 import 'package:app_makankuy/pages/home_page.dart';
 import 'package:app_makankuy/pages/register_page.dart';
 import 'package:app_makankuy/theme.dart';
@@ -12,7 +13,26 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final DatabaseService _databaseService = DatabaseService.instance;
   bool _isObscure = true; 
+  bool isLoginTrue = false;
+
+  final username = TextEditingController();
+  final password = TextEditingController();
+
+  String? _username = null;
+  String? _password = null;
+
+  login() async{
+    var res = await _databaseService.authenticate(username.text, password.text);
+    if(res == true){
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomePage()));
+    }else{
+      setState(() {
+        isLoginTrue = true;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,18 +61,25 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   children: [
                     TextField(
+                      controller: username,
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: grey,
-                        hintText: 'email/username',
+                        hintText: 'username',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
                           borderSide: BorderSide.none,
                         ),
                       ),
+                      onChanged: (value){
+                        setState(() {
+                          _username = value;
+                        });
+                      },
                     ),
                     const SizedBox(height: 30),
                     TextField(
+                      controller: password,
                       obscureText: _isObscure,
                       decoration: InputDecoration(
                         filled: true,
@@ -74,13 +101,19 @@ class _LoginPageState extends State<LoginPage> {
                           },
                         ),
                       ),
+                      onChanged: (value) {
+                        setState(() {
+                          _password = value;
+                        });
+                      },
                     ),
                     const SizedBox(height: 20),
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage()));
+                          login();
+                          // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage()));
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: red,

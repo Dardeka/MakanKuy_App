@@ -1,3 +1,4 @@
+import 'package:app_makankuy/databases/database_service.dart';
 import 'package:app_makankuy/pages/login_page.dart';
 import 'package:app_makankuy/theme.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,18 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  bool _isObscure = true; 
+  final DatabaseService _databaseService = DatabaseService.instance;
+  bool _isObscure = true;
+  
+  final userName = TextEditingController();
+  final phoneNum = TextEditingController();
+  final email = TextEditingController();
+  final password = TextEditingController();
+
+  String? _userName = null;
+  String? _phoneNum = null;
+  String? _email = null;
+  String? _password = null;
 
   @override
   Widget build(BuildContext context) {
@@ -41,19 +53,25 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: Column(
                   children: [
                     TextField(
+                      controller: userName,
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: grey,
-                        hintText: 'Nama',
+                        hintText: 'Nama Pengguna',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
                           borderSide: BorderSide.none,
                         ),
-
                       ),
+                      onChanged: (value) {
+                        setState(() {
+                          _userName = value;
+                        }); 
+                      },
                     ),
                     SizedBox(height: 30),
                     TextField(
+                      controller: phoneNum,
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: grey,
@@ -62,24 +80,34 @@ class _RegisterPageState extends State<RegisterPage> {
                           borderRadius: BorderRadius.circular(8),
                           borderSide: BorderSide.none,
                         ),
-
                       ),
+                      onChanged: (value) {
+                        setState(() {
+                          _phoneNum = value;
+                        });
+                      },
                     ),
                     SizedBox(height: 30),
                     TextField(
+                      controller: email,
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: grey,
-                        hintText: 'email/username',
+                        hintText: 'email',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
                           borderSide: BorderSide.none,
                         ),
-
                       ),
+                      onChanged: (value) {
+                        setState(() {
+                          _email = value;
+                        });
+                      },
                     ),
                     SizedBox(height: 30),
                     TextField(
+                      controller: password,
                       obscureText: _isObscure,
                       decoration: InputDecoration(
                         filled: true,
@@ -101,19 +129,40 @@ class _RegisterPageState extends State<RegisterPage> {
                           },
                         ),
                       ),
+                      onChanged: (value){
+                        setState(() {
+                          _password = value;
+                        });
+                      },
                     ),
                     SizedBox(height: 20),
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: (){},
+                        onPressed: () async {
+                          if(_userName == null || _userName == "" || _phoneNum == null || _phoneNum == "" || _email == null || _email == "" || 
+                          _password == null || _password == ""
+                          ) return;
+                          _databaseService.addUser(_userName!, _email!, _phoneNum!, _password!);
+                          setState(() {
+                            _userName = null; 
+                            _phoneNum = null;
+                            _email = null;
+                            _password = null;
+                          });
+                          final users = await _databaseService.getUsers();
+                          for(var user in users){
+                            print('User ID: ${user.id}, Username: ${user.userName}, Email: ${user.email}, Phone Number: ${user.phoneNum}, Password: ${user.password},');
+                          }
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginPage()));
+                        },
                       style: ElevatedButton.styleFrom(backgroundColor: red,
                       padding: EdgeInsets.all(10),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
                       ), 
-                      child: Text('Masuk', style: TextStyle(color: white, fontSize: 16,),),),
+                      child: Text('Daftar', style: TextStyle(color: white, fontSize: 16,),),),
                     ),
                   ],
                 ),

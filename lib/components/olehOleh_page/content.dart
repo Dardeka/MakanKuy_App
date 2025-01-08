@@ -1,5 +1,5 @@
 import 'package:app_makankuy/pages/shop_detail.dart';
-import 'package:app_makankuy/services/database_service.dart';
+import 'package:app_makankuy/databases/database_service.dart';
 import 'package:app_makankuy/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
